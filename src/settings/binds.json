@@ -1,0 +1,6 @@
+{
+    "start_hot_key": "'\\x13'",
+    "stop_hot_key": "'\\x18'",
+    "starting_delay": 2,
+    "random_koef": 0
+}
