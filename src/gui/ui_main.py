@@ -42,9 +42,9 @@ class Ui_MainWindow(object):
         self.centralwidget.setEnabled(True)
         self.centralwidget.setMinimumSize(QSize(850, 340))
         self.centralwidget.setMaximumSize(QSize(850, 340))
-        self.textEdit = QTextEdit(self.centralwidget)
-        self.textEdit.setObjectName(u"textEdit")
-        self.textEdit.setGeometry(QRect(30, 40, 500, 230))
+        self.textedit_userText = QTextEdit(self.centralwidget)
+        self.textedit_userText.setObjectName(u"textedit_userText")
+        self.textedit_userText.setGeometry(QRect(30, 40, 500, 230))
         palette = QPalette()
         brush = QBrush(QColor(255, 255, 255, 255))
         brush.setStyle(Qt.SolidPattern)
@@ -129,13 +129,13 @@ class Ui_MainWindow(object):
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
         palette.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush5)
 #endif
-        self.textEdit.setPalette(palette)
-        self.textEdit.setStyleSheet(u"color: white;\n"
-"font-family: \"Segoe UI\";\n"
-"highlight: green")
-        self.textEdit.setInputMethodHints(Qt.ImhEmailCharactersOnly|Qt.ImhMultiLine)
-        self.textEdit.setAutoFormatting(QTextEdit.AutoAll)
-        self.textEdit.setAcceptRichText(True)
+        self.textedit_userText.setPalette(palette)
+        self.textedit_userText.setStyleSheet(u"color: white;\n"
+"font-family: \"Segoe UI\";\n")
+        self.textedit_userText.setInputMethodHints(Qt.ImhEmailCharactersOnly|Qt.ImhMultiLine)
+        self.textedit_userText.setAutoFormatting(QTextEdit.AutoAll)
+        self.textedit_userText.setAcceptRichText(False)
+        self.textedit_userText.setTabStopDistance(12)
         self.btn_settings = QPushButton(self.centralwidget)
         self.btn_settings.setObjectName(u"btn_settings")
         self.btn_settings.setGeometry(QRect(730, 20, 30, 30))
@@ -158,13 +158,13 @@ class Ui_MainWindow(object):
 
         self.btn_info.setIcon(icon1)
         self.btn_info.setIconSize(QSize(30, 30))
-        self.settings = QFrame(self.centralwidget)
-        self.settings.setObjectName(u"settings")
-        self.settings.setEnabled(True)
-        self.settings.setGeometry(QRect(570, 60, 250, 200))
-        self.settings.setTabletTracking(False)
-        self.settings.setAcceptDrops(False)
-        self.settings.setStyleSheet(u"QFrame {\n"
+        self.frame_settings = QFrame(self.centralwidget)
+        self.frame_settings.setObjectName(u"frame_settings")
+        self.frame_settings.setEnabled(True)
+        self.frame_settings.setGeometry(QRect(570, 60, 250, 200))
+        self.frame_settings.setTabletTracking(False)
+        self.frame_settings.setAcceptDrops(False)
+        self.frame_settings.setStyleSheet(u"QFrame {\n"
 "	border-style: solid;\n"
 "	border-width: 2px;\n"
 "}\n"
@@ -172,10 +172,10 @@ class Ui_MainWindow(object):
 "QFrame QLabel {\n"
 "	border: none;\n"
 "}")
-        self.settings.setFrameShape(QFrame.StyledPanel)
-        self.settings.setFrameShadow(QFrame.Raised)
-        self.settings.setLineWidth(1)
-        self.btn_save = QPushButton(self.settings)
+        self.frame_settings.setFrameShape(QFrame.StyledPanel)
+        self.frame_settings.setFrameShadow(QFrame.Raised)
+        self.frame_settings.setLineWidth(1)
+        self.btn_save = QPushButton(self.frame_settings)
         self.btn_save.setObjectName(u"btn_save")
         self.btn_save.setGeometry(QRect(150, 165, 75, 24))
         self.btn_save.setStyleSheet(u"background-color: rgba(45, 45, 70, 255);\n"
@@ -184,7 +184,7 @@ class Ui_MainWindow(object):
         icon2 = QIcon()
         icon2.addFile(u"images/icons8-save-20.png", QSize(), QIcon.Normal, QIcon.Off)
         self.btn_save.setIcon(icon2)
-        self.group_settings = QGroupBox(self.settings)
+        self.group_settings = QGroupBox(self.frame_settings)
         self.group_settings.setObjectName(u"group_settings")
         self.group_settings.setGeometry(QRect(10, 10, 221, 151))
         self.group_settings.setTabletTracking(False)
@@ -353,14 +353,14 @@ class Ui_MainWindow(object):
 
         self.verticalLayout.addWidget(self.group_interval)
 
-        self.group_random_factor = QGroupBox(self.group_settings)
-        self.group_random_factor.setObjectName(u"group_random_factor")
-        self.group_random_factor.setStyleSheet(u"background-color: none;\n"
+        self.group_randomFactor = QGroupBox(self.group_settings)
+        self.group_randomFactor.setObjectName(u"group_randomFactor")
+        self.group_randomFactor.setStyleSheet(u"background-color: none;\n"
 "border: none;")
-        self.horizontalLayout_9 = QHBoxLayout(self.group_random_factor)
+        self.horizontalLayout_9 = QHBoxLayout(self.group_randomFactor)
         self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
         self.horizontalLayout_9.setContentsMargins(0, 0, 0, 0)
-        self.randomFactor_icon = QLabel(self.group_random_factor)
+        self.randomFactor_icon = QLabel(self.group_randomFactor)
         self.randomFactor_icon.setObjectName(u"randomFactor_icon")
         self.randomFactor_icon.setMaximumSize(QSize(20, 20))
         self.randomFactor_icon.setStyleSheet(u"background-color: none;")
@@ -368,7 +368,7 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_9.addWidget(self.randomFactor_icon)
 
-        self.randomFactor_label = QLabel(self.group_random_factor)
+        self.randomFactor_label = QLabel(self.group_randomFactor)
         self.randomFactor_label.setObjectName(u"randomFactor_label")
         self.randomFactor_label.setMinimumSize(QSize(70, 0))
         self.randomFactor_label.setMaximumSize(QSize(167777, 16777215))
@@ -380,7 +380,7 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_9.addWidget(self.randomFactor_label)
 
-        self.randomFactor_value = QDoubleSpinBox(self.group_random_factor)
+        self.randomFactor_value = QDoubleSpinBox(self.group_randomFactor)
         self.randomFactor_value.setObjectName(u"randomFactor_value")
         self.randomFactor_value.setStyleSheet(u"color: white;\n"
 "background-color: rgba(15, 20, 40, 235);")
@@ -389,7 +389,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_9.addWidget(self.randomFactor_value)
 
 
-        self.verticalLayout.addWidget(self.group_random_factor)
+        self.verticalLayout.addWidget(self.group_randomFactor)
 
         self.label_writeText = QLabel(self.centralwidget)
         self.label_writeText.setObjectName(u"label_writeText")
@@ -420,6 +420,7 @@ class Ui_MainWindow(object):
         self.label_about.setStyleSheet(u"color: white;\n"
 "background-color: none;")
         self.label_about.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
+        self.label_about.setWordWrap(False)
         self.group_createdBy = QGroupBox(self.frame_info)
         self.group_createdBy.setObjectName(u"group_createdBy")
         self.group_createdBy.setGeometry(QRect(10, 140, 231, 51))
@@ -470,7 +471,32 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_2.addWidget(self.group_credits)
 
+        self.btn_start = QPushButton(self.centralwidget)
+        self.btn_start.setObjectName(u"btn_start")
+        self.btn_start.setGeometry(QRect(30, 280, 40, 40))
+        self.btn_start.setStyleSheet(u"background-color: rgba(45, 45, 70, 255);")
+        icon5 = QIcon()
+        icon5.addFile(u"images/icons8-play-20.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_start.setIcon(icon5)
+        self.btn_start.setIconSize(QSize(40, 40))
+        self.btn_stop = QPushButton(self.centralwidget)
+        self.btn_stop.setObjectName(u"btn_stop")
+        self.btn_stop.setGeometry(QRect(90, 280, 40, 40))
+        self.btn_stop.setStyleSheet(u"background-color: rgba(45, 45, 70, 255);")
+        icon6 = QIcon()
+        icon6.addFile(u"images/icons8-stop-20.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_stop.setIcon(icon6)
+        self.btn_stop.setIconSize(QSize(40, 40))
         MainWindow.setCentralWidget(self.centralwidget)
+        self.frame_settings.raise_()
+        self.textedit_userText.raise_()
+        self.btn_settings.raise_()
+        self.btn_info.raise_()
+        self.label_writeText.raise_()
+        self.start_icon.raise_()
+        self.frame_info.raise_()
+        self.btn_start.raise_()
+        self.btn_stop.raise_()
 
         self.retranslateUi(MainWindow)
 
@@ -501,5 +527,7 @@ class Ui_MainWindow(object):
         self.label_createdBy.setText(QCoreApplication.translate("MainWindow", u"Created by", None))
         self.btn_github.setText(QCoreApplication.translate("MainWindow", u"Top4aK", None))
         self.btn_telegram.setText(QCoreApplication.translate("MainWindow", u"miketapok", None))
+        self.btn_start.setText("")
+        self.btn_stop.setText("")
     # retranslateUi
 
