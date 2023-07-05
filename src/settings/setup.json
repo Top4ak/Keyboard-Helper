@@ -1,1 +1,1 @@
-{"start_hot_key": "\\", "stop_hot_key": "0", "starting_delay": 5.0, "interval": 1.05, "random_factor": 0.96}
+{"start_hot_key": "Ctrl+0", "stop_hot_key": "Ctrl+1", "starting_delay": 1.0, "interval": 0.01, "random_factor": 0.0}
